@@ -1,0 +1,16 @@
+team_name: ""
+primary_contact_name: ""
+primary_contact_email: ""
+primary_contact_phone: ""
+github_repository_url: "https://github.com/USERNAME/trident"
+sandbox_demo_link: ""
+ai_tools_declared:
+  - Claude
+compute_environment_summary: "MacBook Pro M2, 16GB RAM, Python 3.12"
+team_members:
+  - name: ""
+    email: ""
+methodology_summary: >
+  5-stage pipeline: MiniLM embedding + FAISS ANN retrieval → three parallel experts
+  (semantic, career, behavioral) → fixed-weight fusion → cross-encoder rerank +
+  MMR diversity. Profile-specific reasoning generated from candidate data.
