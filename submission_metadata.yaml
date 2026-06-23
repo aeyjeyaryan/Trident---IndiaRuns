@@ -1,0 +1,87 @@
+# Redrob Hackathon — Submission Metadata Template
+#
+# Copy this file to your repo root as `submission_metadata.yaml` and fill it in.
+# The fields here should match what you submit via the portal at upload time.
+# Stage 3 review uses this file to verify your portal metadata.
+
+# ============================================================================
+# Team identity
+# ============================================================================
+team_name: "Asteroid Destroyers"  # Used in leaderboard and announcements
+
+primary_contact:
+  name: "Hemish"
+  email: "primary@example.com"   # Used for all organizer communication
+  phone: "+91 99961 42844"        # Used for top-50 / top-10 outreach
+
+team_members:
+  - name: "Dr. Vishal Gupta"
+    email: "vishal.gupta@mmumullana.org"
+
+  - name: "Aryan Kumar Jha"
+    email: "mr.aryanjha@gmail.com"
+
+  - name: "Harsh"
+    email: "hk8994854@gmail.com"
+
+
+# ============================================================================
+# Code and reproducibility
+# ============================================================================
+github_repo: "https://github.com/YOUR_USERNAME/YOUR_REPO"
+# Required. Must be reachable. Private repos OK if you can grant organizer
+# access at Stage 3 (the email to add will be communicated then).
+
+sandbox_link: "https://huggingface.co/spaces/YOUR_USERNAME/redrob-ranker"
+# Required. A working hosted environment where the ranker can be run on a small
+# candidate sample. See Section 10.5 of submission_spec.md for acceptable
+# platforms (HuggingFace Spaces, Streamlit Cloud, Replit, Colab, Docker, Binder).
+
+reproduce_command: "python rank.py --candidates ./candidates.jsonl --out ./submission.csv"
+# The single command that produces submission.csv from candidates.jsonl.
+# Should run end-to-end within 5 minutes on CPU with 16GB RAM and no network.
+
+# ============================================================================
+# Compute environment
+# ============================================================================
+compute:
+  platform: "MacBook Pro (Apple Silicon)"
+  cpu_cores: 8
+  ram_gb: 8
+  python_version: "3.12.7"
+  os: "macOS 26.4.1"
+  uses_gpu_for_inference: false
+  has_network_during_ranking: false
+  pre_computation_required: true
+  pre_computation_time_minutes: 10
+
+# ============================================================================
+# AI tools declaration
+# ============================================================================
+ai_tools_used:
+  - "Claude"
+
+ai_usage_summary: |
+  Used Claude for code review, refactoring, and pipeline
+  configuration.
+
+# ============================================================================
+# Approach summary (optional but recommended)
+# ============================================================================
+methodology_summary: |
+  5-stage pipeline: FAISS ANN retrieval (MiniLM-L6-v2, 100K→400), 3 parallel
+  expert scorers (semantic cosine similarity, career role-sequence fit,
+  behavioral engagement signals), fixed-weight gate fusion [0.4, 0.35, 0.25],
+  cross-encoder rerank + MMR diversity, and template-based JD-aware reasoning.
+  Uses pre-computed FAISS index for fast retrieval. Runs in ~17s on MPS,
+  well under the 5-minute CPU limit. 23/23 tests pass.
+
+# ============================================================================
+# Declarations
+# ============================================================================
+declarations:
+  read_submission_spec: true
+  code_is_original_work: true
+  no_collusion: true
+  honeypot_check_done: true
+  reproduction_tested: true
